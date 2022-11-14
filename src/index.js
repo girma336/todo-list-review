@@ -4,13 +4,14 @@ import populateTodo from './modules/populateTodo.js';
 import saveTodo from './modules/saveTodo.js';
 import Todo from './modules/Todo.js';
 
+const getTodoList = JSON.parse(localStorage.getItem('todo'));
+
 const mainContainer = document.querySelector('#task-container');
 const clearCompleted = document.querySelector('.clear-all');
 const populateAllTodo = () => {
   mainContainer.innerHTML = '';
-  const todoList = JSON.parse(localStorage.getItem('todo'));
+  todoList = getTodoList;
   todoList.sort((x, y) => x.index - y.index);
-
   todoList.forEach((todo) => {
     populateTodo(todo);
   });
@@ -21,7 +22,7 @@ const addBtn = document.querySelector('#add-task');
 addBtn.addEventListener('click', () => {
   let todoList = [];
   if (localStorage.getItem('todo')) {
-    todoList = JSON.parse(localStorage.getItem('todo'));
+    todoList = getTodoList;
   }
   if (todoItem.value !== '') {
     const todo = new Todo(todoItem.value, false, todoList.length + 1);
@@ -36,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 clearCompleted.addEventListener('click', () => {
-  let todoList = JSON.parse(localStorage.getItem('todo'));
+  let todoList = getTodoList;
 
   todoList = todoList.filter((todo) => todo.completed === false);
   let i = 1;
