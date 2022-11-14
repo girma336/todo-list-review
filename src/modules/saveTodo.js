@@ -5,6 +5,7 @@ const saveTodo = (newTodo) => {
   }
   todoList.push(newTodo);
   localStorage.setItem('todo', JSON.stringify(todoList));
+  window.location.reload();
 };
 
 export default saveTodo;
