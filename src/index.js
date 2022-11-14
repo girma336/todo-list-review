@@ -10,7 +10,8 @@ const mainContainer = document.querySelector('#task-container');
 const clearCompleted = document.querySelector('.clear-all');
 const populateAllTodo = () => {
   mainContainer.innerHTML = '';
-  todoList = getTodoList;
+  const todoList = getTodoList;
+
   todoList.sort((x, y) => x.index - y.index);
   todoList.forEach((todo) => {
     populateTodo(todo);

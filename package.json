@@ -10,7 +10,6 @@
     "server": "node server.js",
     "deploy": "gh-pages -d dist",
     "build": "webpack"
-
   },
   "repository": {
     "type": "git",
